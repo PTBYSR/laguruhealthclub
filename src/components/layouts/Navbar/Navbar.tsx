@@ -46,7 +46,7 @@ const Navbar = () => {
                 className="md:border-l  md:border-b-0  border-b w-full md:border-darker border-opacity-60 border-white md:w-auto  md:py-0 h-[70px] justify-center  px-6 md:h-full flex items-center bg-dark md:bg-opacity-0"
               >
                 <Link href={navlink.href}>
-                  <div className="uppercase text-darker font-inter flex  text-xs font-medium tracking-[1.4px] ">
+                  <div className="uppercase text-white font-inter flex  text-xs font-medium tracking-[1.4px] ">
                     {navlink.title}
                   </div>
                 </Link>
