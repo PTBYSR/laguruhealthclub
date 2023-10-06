@@ -5,14 +5,18 @@ import Link from "next/link";
 import { navLinks } from "./Navlinks";
 import Hamburger from "@/components/icons/Hamburger";
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
+  const currentRoute = router.pathname
+  console.log(currentRoute, "fjadjfdofahdufhafduhafioudhfiasufhduifshaiufdh")
   const [open, isOpen] = useState(false);
   const toggleMenu = () => {
     isOpen(!open);
   };
   return (
-    <nav className="sticky top-0 bg-purple z-[100000] md:bg-opacity-0 flex  justify-between h-[70px] md:h-[115px] pl-4 md:pl-10 items-center md:border-b-darker border-b-white border-b border-opacity-60">
+    <nav className={`${currentRoute === '/join' ? 'bg-darker text-white' : ' md:bg-opacity-60'} sticky top-0 bg-purple md:bg-darker  z-[100000] flex  justify-between h-[70px] md:h-[115px] pl-4 md:pl-10 items-center md:border-b-white border-b-white border-b border-opacity-60  `}>
       <div
         onClick={() => {
           isOpen(false);
@@ -46,7 +50,7 @@ const Navbar = () => {
                 className="md:border-l  md:border-b-0  border-b w-full md:border-darker border-opacity-60 border-white md:w-auto  md:py-0 h-[70px] justify-center  px-6 md:h-full flex items-center bg-dark md:bg-opacity-0"
               >
                 <Link href={navlink.href}>
-                  <div className="uppercase text-white font-inter flex  text-xs font-medium tracking-[1.4px] ">
+                  <div className="uppercase text-white font-inter flex  text-xs font-medium tracking-[1.4px] font-semibold">
                     {navlink.title}
                   </div>
                 </Link>
@@ -55,14 +59,14 @@ const Navbar = () => {
           ))}
           <li className="md:hidden md:border-l  md:border-b-0   w-full md:border-white border-opacity-60 border-white md:w-auto  md:py-0 h-[70px] justify-center  px-6 md:h-full flex items-center bg-purple md:bg-opacity-0">
             <Link href="/join">
-              <div className="uppercase text-white font-inter flex  text-xs font-medium tracking-[1.4px] ">
+              <div className="uppercase text-white font-inter flex  text-xs font-medium tracking-[1.4px] font-semibold">
                 become a member
               </div>
             </Link>
           </li>
         </ul>
         <button className="bg-purple h-full px-6 md:block hidden">
-          <Link href={"/member"}>
+          <Link href={"/join"}>
             <div className="uppercase text-white font-inter text-xs font-medium tracking-[1.4px] ">
               become a member
             </div>
@@ -84,12 +88,12 @@ const Navbar = () => {
         <ul className="mt-[70px] md:mt-0 md:h-full flex md:flex-row flex-col md:w-auto w-full md:border-none right-0 md:static absolute top-0 items-center z-20">
           {navLinks?.map((navlink) => (
             <>
-              <Link href={navlink.href} className="hover:text-white hover:bg-darker md:border-l  md:border-b-0  border-b w-full md:border-darker border-opacity-60 border-white md:w-auto  md:py-0 h-[70px] justify-center  px-6 md:h-full flex items-center bg-dark md:bg-opacity-0">
+              <Link href={navlink.href} className="hover:text-white hover:bg-darker md:border-l  md:border-b-0  border-b w-full md:border-white border-opacity-60 border-white md:w-auto  md:py-0 h-[70px] justify-center  px-6 md:h-full flex items-center bg-dark md:bg-opacity-0">
                 <li
                   key={navlink.id}
                   className=""
                 >
-                  <div className="uppercase  font-inter flex  text-xs font-medium tracking-[1.4px] ">
+                  <div className="uppercase  font-inter flex  text-xs font-medium tracking-[1.4px] font-semibold text-white">
                     {navlink.title}
                   </div>
                 </li>
@@ -105,7 +109,7 @@ const Navbar = () => {
           </Link>
         </ul>
         <button className="bg-purple h-full px-6 md:block hidden">
-          <Link href={"/member"}>
+          <Link href={"/join"}>
             <div className="uppercase text-white font-inter text-xs font-medium tracking-[1.4px] ">
               become a member
             </div>

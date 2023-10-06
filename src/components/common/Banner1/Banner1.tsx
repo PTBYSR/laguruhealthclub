@@ -1,18 +1,21 @@
-import { services } from "../../../../db/Services/services";
+import Running from "@/components/icons/Running";
+import {  services, type servicesCardType } from "../../../../db/Services/services";
 import BannerItem from "./BannerItem";
 
 
-const Banner1 = ({ icon, title, body }:any) => {
-  console.log(services)
+
+
+export default  function Banner1({ services }: {services ?: servicesCardType[]}) {
   return (
     <div className="flex md:bg-white justify-center md:flex-row flex-col md:border-none border-t border-white border-opacity-25" >
+      
       {
-        services.map((x) => (
-          <BannerItem  icon={x.icon} key={x.id} title={x.title} body={x.body} />
+        services?.map((x , key) => (
+          <BannerItem  icon={<Running fill="#624C7B" w="25"/>} key={key} title={x.title} body={x.description} />
         ))
       }
     </div>
   );
 };
  
-export default Banner1;
+

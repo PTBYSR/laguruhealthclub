@@ -15,12 +15,30 @@ import Faqs from "@/components/interface/Faqs/Faqs";
 import landing from "../../public/landing.jpg";
 import landing1 from "../../public/home-mb.png";
 import map from "../../public/map.png";
-
-
+import PricingCalc from "@/components/common/PricingCalc/PricingCalc";
+import { getServices, getLocation, getSingles, getCouples } from "../../db/Services/services";
+import PricingTabs from "@/components/interface/PricingTabs/PricingTabs";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const res = await getServices()
+  const res2 = await getLocation()
+  const res3 = await getSingles()
+  const res4 = await getCouples()
+  console.log("singles from getserver", res3)
+  return { props: { servicebanner : res, location : res2 , singles : res3, couples : res4} }
+
+
+}
+
+
+
+export default function Home({ servicebanner, location, singles, couples } : any) {
+
+  console.log(servicebanner, "hkkkhkhkkhkhkhkhkhk")
+  console.log(singles, "singggg")
+  console.log(location.attributes.address, "locationnnn")
   return (
     <Main
       meta={
@@ -30,14 +48,14 @@ export default function Home() {
         />
       }
     >
-      <div className=" top-0 absolute -z-10 hidden md:block">
+      <div className=" top-0 absolute -z-10 hidden  md:block">
         <Image priority src={landing} alt="" width={1500} />
       </div>
       <div className=" top-0 -left-[40px] absolute -z-10 md:hidden block bg-dark w-[500px]">
-        <Image priority src={landing1} alt=""  className="opacity-60"/>
+        <Image priority src={landing1} alt="" className="opacity-60" />
       </div>
       <main className="relative ">
-        <section id="landing">
+        <section id="landing" className="bg-darker bg-opacity-60">
           <div className="h-[600px] px-5 flex gap-10 flex-col justify-center">
             <h1 className="italic text-white text-3xl md:text-5xl uppercase font-bold leading-[48px] md:leading-[70px]">
               empower your <br />
@@ -54,7 +72,7 @@ export default function Home() {
               <Button>Get Started</Button>
             </div>
           </div>
-          <Banner1 />
+          <Banner1 services={servicebanner}/>
         </section>
 
         <section id="services">
@@ -88,11 +106,14 @@ export default function Home() {
               pricing tailored <br /> to your needs
             </div>
           </div>
-          <div className="flex justify-between mt-20 md:flex-row flex-col md:gap-0 gap-10">
+          {/* <div className="flex justify-between mt-20 md:flex-row flex-col md:gap-0 gap-10">
             <BlogCard />
             <BlogCard />
             <BlogCard />
-          </div>
+
+            
+          </div> */}
+          <PricingTabs singles={singles}  couples={couples}/>
         </section>
 
         <section>
@@ -111,16 +132,13 @@ export default function Home() {
                 find your gym
               </div>
               <div className="text-sm text-white opacity-70 font-light font-inter my-5 leading-[27px] ">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis, quaerat! Ducimus facere 
+              Prime location, accessible and convenient for your fitness journey.
               </div>
               <div className="border-white border border-opacity-60 py-7 px-8">
-                  <div className="text-lg text-white mb-4">
-                    Laguru Health Club Abuja
-                  </div>
-                  <div className="text-white opacity-60">
-                  Gwarimpa
-                  </div>
+                <div className="text-lg text-white mb-4">
+                 {location.attributes.address}
+                </div>
+                <div className="text-white opacity-60">{location.attributes.city}</div>
               </div>
             </div>
           </div>

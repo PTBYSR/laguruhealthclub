@@ -5,13 +5,22 @@ import React from "react";
 import landing from "../../public/white-shirt.jpg";
 import landing1 from "../../public/servies-mb.png";
 import Subline from "@/components/icons/Subline";
-import { services } from "../../db/Services/services";
+import { getServices, getServicesBig, services } from "../../db/Services/services";
 import Card from "@/components/common/Card/Card";
 import Banner1 from "@/components/common/Banner1/Banner1";
 import Faqs from "@/components/interface/Faqs/Faqs";
 
 
-const Services = () => {
+export const getServerSideProps = async () => {
+  const res = await getServices()
+  const bigbanners = await getServicesBig()
+  return { props: { servicebanner : res , bigbanners} }
+
+}
+
+
+const Services = ({servicebanner, bigbanners } : any) => {
+  console.log(servicebanner, 'from now')
   return (
     <Main
       meta={
@@ -39,13 +48,13 @@ const Services = () => {
         </div>
       </div>
 
-      <Banner1/>
+      <Banner1 services={servicebanner}/>
 
       <section>
         
         {
-          services.map((x) => (
-            <Card label={x.label} key={x.id} title={x.title} body={x.body} img={x.img}/>
+          bigbanners.map(({x, key }:any) => (
+            <Card label={x.label} key={x.id} title={x.title} body={x.description} img={x.img}/>
           ))
         }
 

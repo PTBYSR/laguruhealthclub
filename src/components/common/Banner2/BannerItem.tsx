@@ -20,8 +20,7 @@ const BannerItem = ({title,body,icon}:any) => {
       </div>
       <div className="mt-1">
         <div className="text-sm text-center text-darker opacity-60">
-          Lorem ipsum veniam. Deleniti nulla impedit
-          tempora odio reprehenderit quia cupiditat.
+          {body}
         </div>
       </div>
     </div>

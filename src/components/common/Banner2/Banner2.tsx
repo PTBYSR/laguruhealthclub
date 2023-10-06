@@ -13,28 +13,28 @@ const items = [
   {
     id: 1,
     title: "The Ride",
-    body: "",
+    body: "Revitalize your day with an energizing spinning class experience.",
     icon: <Ride  fill="#624C7B"/>,
 
   },
   {
     id: 2,
     title: "Yoga",
-    body: "",
+    body: "Yoga classes: coming soon to nurture your mind and body.",
     icon: <Monk  fill="#624C7B"/>,
 
   },
   {
     id: 3,
     title: "Cardio",
-    body: "",
+    body: "Energize and elevate your fitness with invigorating cardio sessions.",
     icon: <Cardio fill="#624C7B"/>,
 
   },
   {
     id: 4,
     title: "Spot",
-    body: "",
+    body: "Power up your strength with intensive and rewarding weightlift sessions.",
     icon: <Lift  fill="#624C7B"/>
 
   },
@@ -59,7 +59,7 @@ const Banner2 = () => {
         {
           items.map((x) => (
             <>
-            <BannerItem key={x.id} title={x.title} icon={x.icon}/>
+            <BannerItem key={x.id} title={x.title} icon={x.icon} body={x.body}/>
             </>
           ))
         }
