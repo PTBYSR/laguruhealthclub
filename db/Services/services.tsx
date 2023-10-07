@@ -56,7 +56,7 @@ export const getServices = async () => {
         
         const response = await {data : []}
 
-        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`http://127.0.0.1:1337/api/service-banners` , {
+        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`${process.env.STRAPI_HOST}/api/service-banners` , {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
@@ -85,7 +85,7 @@ export const getCouples = async () => {
         
         const response = await {data : []}
 
-        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`http://127.0.0.1:1337/api/couples` , {
+        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`${process.env.STRAPI_HOST}/api/couples` , {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
@@ -111,7 +111,7 @@ export const getSingles = async () => {
         
         const response = await {data : []}
 
-        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`http://127.0.0.1:1337/api/singles` , {
+        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`${process.env.STRAPI_HOST}/api/singles` , {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
@@ -138,7 +138,7 @@ export const getServicesBig = async () => {
         
         const response = await {data : []}
 
-        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`http://127.0.0.1:1337/api/big-banners` , {
+        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`${process.env.STRAPI_HOST}/api/big-banners` , {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
@@ -168,7 +168,7 @@ export const getLocation = async () => {
         
         const response = await {data : []}
 
-        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`http://127.0.0.1:1337/api/location` , {
+        const res = await axios.get<{data : {id: number, attributes : any}[]}>(`${process.env.STRAPI_HOST}/api/location` , {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${process.env.BEARER_TOKEN}`
