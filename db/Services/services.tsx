@@ -185,7 +185,7 @@ export const getLocation = async () => {
     }
     catch (e) 
     {
-        console.log((e as Error).message, "error of axios singles")
+        console.error((e as Error).message, "error of axios singles of location")
         
         return "Gwarimpa"
     }

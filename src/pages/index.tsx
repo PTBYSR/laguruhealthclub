@@ -26,7 +26,7 @@ export const getServerSideProps = async () => {
   const res2 = await getLocation()
   const res3 = await getSingles()
   const res4 = await getCouples()
-  console.log("singles from getserver", res3)
+  console.log("singles from getserver", res2)
   return { props: { servicebanner : res, location : res2 , singles : res3, couples : res4} }
 
 
@@ -136,9 +136,9 @@ export default function Home({ servicebanner, location, singles, couples } : any
               </div>
               <div className="border-white border border-opacity-60 py-7 px-8">
                 <div className="text-lg text-white mb-4">
-                 {location.attributes?.address}
+                 {location?.attributes?.address}
                 </div>
-                <div className="text-white opacity-60">{location.attributes.city}</div>
+                <div className="text-white opacity-60">{location?.attributes?.city}</div>
               </div>
             </div>
           </div>

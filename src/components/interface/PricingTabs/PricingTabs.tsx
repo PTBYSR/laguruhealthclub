@@ -53,9 +53,6 @@ import React, { useState } from "react";
 
 const PricingTabs = ({singles,couples}:any) => {
   const [activeTab, setActiveTab] = useState(0);
-  console.log(singles[0].duration, "funckk")
-  console.log(singles, "funckk")
-  console.log(couples, "funckttrttrfdfdffdk")
 
   const handleTabClick = (index:any) => {
     setActiveTab(index);
