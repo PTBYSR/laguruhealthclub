@@ -38,7 +38,7 @@ export default function Home({ servicebanner, location, singles, couples } : any
 
   console.log(servicebanner, "hkkkhkhkkhkhkhkhkhk")
   console.log(singles, "singggg")
-  // console.log(location.attributes.address, "locationnnn")
+  console.log(location.attributes?.address, "locationnnn")
   return (
     <Main
       meta={
@@ -136,9 +136,9 @@ export default function Home({ servicebanner, location, singles, couples } : any
               </div>
               <div className="border-white border border-opacity-60 py-7 px-8">
                 <div className="text-lg text-white mb-4">
-                 {/* {location.attributes.address} */}
+                 {location.attributes?.address}
                 </div>
-                {/* <div className="text-white opacity-60">{location.attributes.city}</div> */}
+                <div className="text-white opacity-60">{location.attributes.city}</div>
               </div>
             </div>
           </div>
