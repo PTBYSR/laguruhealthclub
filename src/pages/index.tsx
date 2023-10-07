@@ -38,7 +38,7 @@ export default function Home({ servicebanner, location, singles, couples } : any
 
   console.log(servicebanner, "hkkkhkhkkhkhkhkhkhk")
   console.log(singles, "singggg")
-  console.log(location.attributes.address, "locationnnn")
+  // console.log(location.attributes.address, "locationnnn")
   return (
     <Main
       meta={
