@@ -14,10 +14,11 @@ import { Meta } from "@/layouts/Meta";
 import Faqs from "@/components/interface/Faqs/Faqs";
 import landing from "../../public/landing.jpg";
 import landing1 from "../../public/home-mb.png";
-import map from "../../public/map.png";
+import map from "../../public/location.png";
 import PricingCalc from "@/components/common/PricingCalc/PricingCalc";
 import { getServices, getLocation, getSingles, getCouples } from "../../db/Services/services";
 import PricingTabs from "@/components/interface/PricingTabs/PricingTabs";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,9 +37,9 @@ export const getServerSideProps = async () => {
 
 export default function Home({ servicebanner, location, singles, couples } : any) {
 
-  console.log(servicebanner, "hkkkhkhkkhkhkhkhkhk")
-  console.log(singles, "singggg")
-  console.log(location.attributes?.address, "locationnnn")
+  // console.log(servicebanner, "hkkkhkhkkhkhkhkhkhk")
+  // console.log(singles, "singggg")
+  // console.log(location.attributes?.address, "locationnnn")
   return (
     <Main
       meta={
@@ -119,7 +120,9 @@ export default function Home({ servicebanner, location, singles, couples } : any
         <section>
           <div className=" bg-dark py-24 px-5 flex md:flex-row flex-col-reverse justify-center gap-20">
             <div className="md:w-[450px]">
-              <Image src={map} alt="map" />
+              <Link href="https://www.google.com/maps/dir//laguru+health+club/@9.0640917,7.4066673,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x104e74d58c1abbff:0x241330dfbe48c300!2m2!1d7.4345329!2d9.0694651?entry=ttu">
+                <Image src={map} alt="map" />
+              </Link>
             </div>
             <div className="flex flex-col gap-2 justify-center md:w-[400px]">
               <div className="flex items-center gap-2">

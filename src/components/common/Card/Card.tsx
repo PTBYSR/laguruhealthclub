@@ -13,6 +13,9 @@ const Card = ({ label, title, body, buttonText, id, img, className }: any) => {
       "flex  md:h-[540px]  bg-dark flex-col-reverse md:flex-row",
       label === "privacy" && ["md:flex-row"],
       label === "combat" && ["md:flex-row"],
+      // @ts-ignore
+      label ===  id % 2 === 0 && ["md:flex-row"],
+      // label ===  id % 2 !== 0 && ["md:flex-row-reverse"],
       label === "our mission" && ["md:flex-row"],
       label === "fitness" && ["md:flex-row-reverse"],
       label === "group sessions" && ["md:flex-row-reverse"],

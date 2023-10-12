@@ -15,12 +15,13 @@ export const getServerSideProps = async () => {
   const res = await getServices()
   const bigbanners = await getServicesBig()
   return { props: { servicebanner : res , bigbanners} }
-
+  
 }
 
 
 const Services = ({servicebanner, bigbanners } : any) => {
-  console.log(servicebanner, 'from now')
+  console.log(bigbanners[0], "big banner")
+  // console.log(servicebanner, 'from now')
   return (
     <Main
       meta={
@@ -53,10 +54,14 @@ const Services = ({servicebanner, bigbanners } : any) => {
       <section>
         
         {
-          bigbanners.map(({x, key }:any) => (
-            <Card label={x.label} key={x.id} title={x.title} body={x.description} img={x.img}/>
+          bigbanners.map((x:any) => (
+            <>
+            <Card label={x?.label} key={x?.id} title={x?.title} body={x?.description} img={x?.img}/>
+            </>
           ))
         }
+
+
 
       </section>
       <Faqs/>

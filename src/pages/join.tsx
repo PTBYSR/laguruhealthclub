@@ -8,9 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useFormspark } from "@formspark/use-formspark";
+
 const Join = () => {
   const router = useRouter();
-  const currentRoute = router.pathname
+  const currentRoute = router.pathname;
   const [isSuccess, setSuccess] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -18,8 +20,11 @@ const Join = () => {
     firstName: "",
     lastName: "",
   });
+  const [submit, submitting] = useFormspark({
+    formId: "mboU3Aa2",
+  });
 
-  const handleChange = (e:any) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -27,7 +32,7 @@ const Join = () => {
     });
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(formData.firstName);
     console.log([
@@ -48,13 +53,15 @@ const Join = () => {
     // Handle form submission here (e.g., send data to the server)
     console.log("Form Data:", formData);
     setSuccess(true);
+    await submit({ formData });
+    alert("Form submitted");
     router.push("https://paystack.com/pay/0x82xw1ex7");
     setTimeout(() => {
-      setSuccess(false)
-    },3000)
+      setSuccess(false);
+    }, 3000);
   };
 
-console.log(currentRoute, "currrrr")
+  console.log(currentRoute, "currrrr");
 
   return (
     <Main
@@ -107,8 +114,8 @@ console.log(currentRoute, "currrrr")
 
               <div>
                 <input
-                placeholder="Email"
-                className="w-full border flex border-white border-opacity-60 py-4 px-3 bg-dark mb-4"
+                  placeholder="Email"
+                  className="w-full border flex border-white border-opacity-60 py-4 px-3 bg-dark mb-4"
                   type="email"
                   id="email"
                   name="email"
@@ -118,8 +125,8 @@ console.log(currentRoute, "currrrr")
               </div>
               <div>
                 <input
-                placeholder="Phone Number"
-                className="w-full border flex border-white border-opacity-60 py-4 px-3 bg-dark mb-4"
+                  placeholder="Phone Number"
+                  className="w-full border flex border-white border-opacity-60 py-4 px-3 bg-dark mb-4"
                   type="phoneNumber"
                   id="phoneNumber"
                   name="phoneNumber"
@@ -128,7 +135,6 @@ console.log(currentRoute, "currrrr")
                 />
               </div>
               <button
-
                 className=" z-[10] inline-block hover:text-black text-white  border-white border-2 py-4 px-6 inter text-xs text-white font-medium tracking-[1.4px] uppercase mt-3"
                 onClick={handleSubmit}
                 type="submit"
